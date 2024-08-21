@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum-Inspired Evolutionary Algorithm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, #85a2b6, #d5e1df);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #main-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div id="main-container">
+    <h1>Quantum-Inspired Evolutionary Algorithm</h1>
+    <form id="inputForm">
+        <label for="maxGenerations">Max Generations:</label>
+        <input type="number" id="maxGenerations" name="maxGenerations" required><br>
+
+        <label for="populationSize">Population Size:</label>
+        <input type="number" id="populationSize" name="populationSize" required><br>
+
+        <label for="numBits">Number of Bits:</label>
+        <input type="number" id="numBits" name="numBits" required><br>
+
+        <button type="submit">Run Algorithm</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    document.getElementById("inputForm").addEventListener("submit", function(event) {
+ event.preventDefault();
+ runAlgorithm();
+ });
+
+ function runAlgorithm() {
+ var maxGenerations = parseInt(document.getElementById("maxGenerations").value);
+ var populationSize = parseInt(document.getElementById("populationSize").value);
+ var numBits = parseInt(document.getElementById("numBits").value);
+
+ // Initialize the population of quantum chromosomes Q(t)
+ var population = initializePopulation(populationSize, numBits);
+
+ // Main loop
+ for (var t = 0; t < maxGenerations; t++) {
+ // Make P(t) by observing the states of Q(t - 1)
+ var evaluatedPopulation = observePopulation(population);
+
+ // Evaluate the population of solutions P(t)
+ var fitness = evaluatePopulation(evaluatedPopulation);
+
+ // Update Q(t) using quantum gates
+ updateQuantumState(population, fitness);
+
+ // Store the best b solutions among B(t - 1) and P(t) into B(t)
+ var bestSolutions = storeBestSolutions(evaluatedPopulation, fitness);
+
+ // Store the best solution b among B(t)
+ var bestSolution = findBestSolution(bestSolutions);
+
+ // If migration condition, then migrate best solution
+ if (migrationCondition()) {
+ migrateSolution(bestSolution, bestSolutions);
+ }
+ }
+
+ // Output the best solution found
+ var bestSolutionString = arrayToString(bestSolutions[0]);
+ document.getElementById("result").innerHTML = "<h2>Best Solution Found:</h2><p>" + bestSolutionString + "</p>";
+ }
+
+ function initializePopulation(populationSize, numBits) {
+ var population = [];
+ for (var i = 0; i < populationSize; i++) {
+ var chromosome = [];
+ for (var j = 0; j < numBits; j++) {
+ chromosome.push(Math.random() < 0.5); // Random boolean value
+ }
+ population.push(chromosome);
+ }
+ return population;
+ }
+
+ function observePopulation(quantumPopulation) {
+ // Placeholder method - replace with your observation logic
+ return quantumPopulation;
+ }
+
+ function evaluatePopulation(population) {
+ // Placeholder method - replace with your fitness evaluation logic
+ var fitness = [];
+ for (var i = 0; i < population.length; i++) {
+ fitness.push(Math.random()); // Placeholder fitness values
+ }
+ return fitness;
+ }
+
+ function storeBestSolutions(population, fitness) {
+ // Placeholder method - replace with your best solution storing logic
+ // For now, let's just return the entire population
+ return population;
+ }
+
+ function updateQuantumState(population, fitness) {
+ // Placeholder method - replace with your quantum gate update logic
+ }
+
+ function findBestSolution(population) {
+ // Placeholder method - replace with your best solution finding logic
+ // For now, let's assume the first solution is the best
+ return population[0];
+ }
+
+ function migrationCondition() {
+ // Placeholder method - replace with your migration condition logic
+ // For now, let's assume migration occurs randomly
+ return Math.random() < 0.5;
+ }
+
+ function migrateSolution(bestSolution, bestSolutions) {
+ // Placeholder method - replace with your migration logic
+ }
+
+ function arrayToString(array) {
+ var str = "";
+ for (var i = 0; i < array.length; i++) {
+ str += array[i] ? '1' : '0';
+ }
+ return str;
+}
+</script>
+</body>
+</html>
+
+

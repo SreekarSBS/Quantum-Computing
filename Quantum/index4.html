@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantum Algorithms</title>
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(to bottom right, #2c3e50, #4ca1af);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #f5f5f5;
+      }
+  
+      h1 {
+        text-align: center;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        margin-top: 0;
+        font-size: 2rem;
+      }
+  
+      form {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        backdrop-filter: blur(10px);
+      }
+  
+      label {
+        font-size: 1rem;
+        color: #f5f5f5;
+        margin-bottom: 10px;
+        display: block;
+        text-align: left;
+      }
+  
+      input[type="text"], input[type="number"] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        font-size: 1rem;
+      }
+  
+      input[type="text"]::placeholder, input[type="number"]::placeholder {
+        color: #dddddd;
+      }
+  
+      button[type="button"] {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background-color: #3498db;
+        color: #ffffff;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-top: 15px;
+      }
+  
+      button[type="button"]:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+      }
+  
+      #result {
+        margin-top: 20px;
+        font-size: 1.2rem;
+        color: #ffffff;
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+  
+      .container {
+        max-width: 400px;
+        width: 100%;
+      }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Quantum-Inspired Acromyrex Crossover Evolutionary Algorithm (QIAEA)</h1>
+
+  <form id="crossoverForm">
+    <label for="queenChromosome">Queen Chromosome:</label>
+    <input type="text" id="queenChromosome" name="queenChromosome" required><br><br>
+
+    <label for="maleChromosome">Male Chromosome:</label>
+    <input type="text" id="maleChromosome" name="maleChromosome" required><br><br>
+
+    <label for="numQubitsToSwap">Number of Qubits to Swap:</label>
+    <input type="number" id="numQubitsToSwap" name="numQubitsToSwap" required><br><br>
+
+    <button type="button" onclick="runCrossover()">Run Crossover</button>
+  </form>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  function runCrossover() {
+    var queenChromosome = document.getElementById("queenChromosome").value;
+    var maleChromosome = document.getElementById("maleChromosome").value;
+    var numQubitsToSwap = document.getElementById("numQubitsToSwap").value;
+
+   
+    var offspringChromosome = performCrossover(queenChromosome, maleChromosome, numQubitsToSwap);
+
+   
+    var crossoverResult = "Running Crossover with parameters:<br>";
+    crossoverResult += "Queen Chromosome: " + queenChromosome + "<br>";
+    crossoverResult += "Male Chromosome: " + maleChromosome + "<br>";
+    crossoverResult += "Number of Qubits to Swap: " + numQubitsToSwap + "<br>";
+    crossoverResult += "<br>Offspring Chromosome: " + offspringChromosome;
+
+    document.getElementById("result").innerHTML = crossoverResult;
+  }
+
+  function performCrossover(queenChromosome, maleChromosome, numQubitsToSwap) {
+    
+    return "11011010"; 
+  }
+</script>
+</body>
+</html>

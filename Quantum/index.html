@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Computing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tac+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            font-family: 'Arial Black', sans-serif;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.7), 0 0 10px rgba(0, 255, 0, 0.5), 0 0 15px rgba(0, 255, 0, 0.3), 0 0 20px rgba(0, 255, 0, 0.2), 0 0 30px rgba(0, 255, 0, 0.1), 0 0 40px rgba(0, 255, 0, 0.05);
+        }
+        nav a {
+            color: #0f0;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .topics {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .topic {
+            flex: 1;
+            border-radius: 10px; /* Border radius restored */
+            padding: 20px;
+            margin: 10px;
+            background: #111;
+            box-shadow: 0 0 10px #33ff33;
+            transition: background 0.3s;
+        }
+        .topic:hover {
+            background: #222;
+        }
+        .topic-title {
+            font-size: 24px; /* Font style restored */
+            transition: opacity 0.3s;
+            font-family: 'Bebas Neue', cursive; /* Font style restored */
+        }
+        .topic-content {
+            display: none;
+            font-size: 16px; /* Font style restored */
+        }
+        .topic:hover .topic-title {
+            opacity: 0;
+        }
+        .topic:hover .topic-content {
+            display: block;
+        }
+        .future {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+        }
+        .evolutionary {
+            background: linear-gradient(to right, #7fffd4, #2eb872);
+        }
+        .swarm {
+            background: linear-gradient(to right, #667eea, #764ba2);
+        }
+        .background {
+            background: linear-gradient(to right, #ffefba, #ffffff);
+        }
+        p {
+            font-family: 'Bebas Neue', cursive; /* Font style restored */
+            color: #fff;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #333;
+            color: #aaa;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .citation {
+            color: #fff;
+            font-family: 'Tac One', sans-serif; /* Font style restored */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="font-size: 48px;">Quantum Computing</h1>
+        <nav>
+            <a href="http://127.0.0.1:5500/Quantum/index2.html">Quantum Inspired Evolution Algorithm</a>
+            <a href="http://127.0.0.1:5500/Quantum/index4.html">Crossover</a>
+            <a href="http://127.0.0.1:5500/Quantum/index6.html">Acromyrex (QIAEA)</a>
+            <a href="http://127.0.0.1:5500/Quantum/index1.html">Genetic Quantum Algorithm</a>
+            <a href="http://127.0.0.1:5500/Quantum/index5.html">Standard Gravitational Search</a>
+        </nav>
+        <p>Matter - Mathematical optimization and its relation to Quantum Computing</p>
+    </header>
+    <main>
+        <div class="topics">
+            <div class="topic future">
+                <h2 class="topic-title">Future of Quantum Computing</h2>
+                <div class="topic-content">
+                    <p>In 2024, the quantum computing field is expected to transition from physical qubits to error-corrected logical qubits and see increased global collaboration in quantum research, marking a big year for the technology. Quantum computing is the next frontier for faster and more powerful computing technologies. It has the potential to better optimize routes for shipping and delivery, speed up battery development for electric vehicles, and more accurately predict trends in financial markets.</p>
+                </div>
+            </div>
+            <div class="topic evolutionary">
+                <h2 class="topic-title">Quantum Inspired Evolutionary Algorithm</h2>
+                <div class="topic-content">
+                    <p>Quantum-inspired evolutionary algorithm (QEA), which takes concepts of quantum physics (e.g., quantum superposition and quantum rotation gate) and uses them to enhance existing evolutionary algorithm (EA), can be used to estimate user pairing combination that yields an improved performance. QEA was shown to outperform the classical EA and provide an acceptable solution even with a small number of population. Therefore, QEA application in user pairing is expected to improve performance.</p>
+                </div>
+            </div>
+            <div class="topic swarm">
+                <h2 class="topic-title">Quantum Swarm Evolutionary Algorithm</h2>
+                <div class="topic-content">
+                    <p>QEA was proposed by Han, which was inspired by the concept of quantum computing. In QEA, the smallest unit of information is called a Q-bit, which is defined as where α and β are complex numbers that specify the probability amplitudes of the corresponding states. The moduli |α|2 and |β|2 are the probabilities that the Q-bit exists in state “0” and state “1”, respectively, which satisfy that. And an m-Q-bits is defined as where i=1,2, …, m.</p>
+                </div>
+            </div>
+            <div class="topic background">
+                <h2 class="topic-title">Theoretical Background</h2>
+                <div class="topic-content">
+                    <p>Quantum computers and classical computers process information differently. A quantum computer uses qubits to run multidimensional quantum algorithms. Their processing power increases exponentially as qubits are added. A classical processor uses bits to operate various programs. Their power increases linearly as more bits are added. Classical computers have much less</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p class="citation">COscar H. Montiel Ross, "A Review of Quantum-Inspired Metaheuristics: Going From Classical Computers to Real Quantum Computers," IEEE Access, vol. 7, pp. 183200-183218, 2019. DOI: 10.1109/ACCESS.2019.2962155. [Online]. Available: https://ieeexplore.ieee.org/document/8900077
+
+            Received November 28, 2019, accepted December 21, 2019, date of publication December 25, 2019, date of current version January 3, 2020</p>
+    </footer>
+</body>
+</html>

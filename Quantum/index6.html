@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantum-Inspired Acromyrex Evolutionary Algorithm</title>
+  <style>
+    body {
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, #fff700, #ff7e5f);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+          }
+      
+          h1 {
+            text-align: center;
+            color: #ffddc1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+            font-size: 2rem;
+          }
+      
+          .container {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+          }
+      
+          label {
+            font-size: 1.1rem;
+            color: #555;
+            display: block;
+            margin: 10px 0 5px;
+          }
+      
+          input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+          }
+      
+          button[type="submit"] {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+          }
+      
+          button[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+          }
+      
+          #result {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: #333;
+            padding: 15px;
+            background-color: rgba(255, 239, 213, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Quantum-Inspired Acromyrex Evolutionary Algorithm</h1>
+  <form id="inputForm">
+    <label for="maxGenerations">Max Generations:</label>
+    <input type="number" id="maxGenerations" name="maxGenerations" required><br><br>
+
+    <label for="populationSize">Population Size:</label>
+    <input type="number" id="populationSize" name="populationSize" required><br><br>
+
+    <label for="numQubits">Number of Qubits:</label>
+    <input type="number" id="numQubits" name="numQubits" required><br><br>
+
+    <button type="submit">Run Algorithm</button>
+  </form>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  document.getElementById("inputForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      runAlgorithm();
+  });
+
+  function runAlgorithm() {
+      var maxGenerations = document.getElementById("maxGenerations").value;
+      var populationSize = document.getElementById("populationSize").value;
+      var numQubits = document.getElementById("numQubits").value;
+
+      // Call the JavaScript function to run the algorithm
+      runQIAEA(maxGenerations, populationSize, numQubits);
+  }
+
+  function runQIAEA(maxGenerations, populationSize, numQubits) {
+      // Initialize the quantum chromosome
+      var quantumChromosome = initializeQuantumChromosome(numQubits);
+
+      // Main loop
+      for (var t = 0; t < maxGenerations; t++) {
+          // Placeholder: Apply Hadamard transform
+          // Placeholder: Apply Orthogonal Forward Method
+          // Placeholder: Evaluate quantum chromosomes
+          // Placeholder: Selection
+          // Placeholder: Elitism
+          // Placeholder: Reproduction (Crossover)
+          // Placeholder: Mutation (optional)
+      }
+
+      // Output the best solution found
+      var resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "<h2>Best quantum chromosome found:</h2>" + printQuantumChromosome(quantumChromosome);
+  }
+
+  // Initialize the quantum chromosome
+  function initializeQuantumChromosome(numQubits) {
+      var quantumChromosome = [];
+      for (var i = 0; i < numQubits; i++) {
+          var randomProbability = Math.random();
+          var imaginaryPart = Math.sqrt(1 - Math.pow(randomProbability, 2));
+          quantumChromosome.push([randomProbability, imaginaryPart]);
+      }
+      return quantumChromosome;
+  }
+
+  // Helper function to print quantum chromosome
+  function printQuantumChromosome(quantumChromosome) {
+      var output = "<ul>";
+      for (var i = 0; i < quantumChromosome.length; i++) {
+          output += "<li>Qubit " + (i + 1) + ": (" + quantumChromosome[i][0] + ", " + quantumChromosome[i][1] + ")</li>";
+      }
+      output += "</ul>";
+      return output;
+  }
+</script>
+</body>
+</html>

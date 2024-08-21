@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standard GSA</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, #ff7e5f, #feb47b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        #container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        button[type="button"] {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button[type="button"]:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        #output {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            text-align: left;
+            color: #333;
+            padding: 15px;
+            background-color: rgba(69, 123, 157, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    
+</head>
+<body>
+<div>
+    <h1>Standard GSA</h1>
+
+    <form id="gsaForm">
+        <label for="N">Number of Agents (N):</label>
+        <input type="number" id="N" name="N" required><br><br>
+
+        <label for="Imax">Maximum Number of Iterations (Imax):</label>
+        <input type="number" id="Imax" name="Imax" required><br><br>
+
+        <label for="G0">Initial Gravitational Constant (G0):</label>
+        <input type="number" id="G0" name="G0" required><br><br>
+
+        <label for="alpha">Acceleration Coefficient (alpha):</label>
+        <input type="number" id="alpha" name="alpha" required><br><br>
+
+        <label for="epsilon">Small Constant (epsilon):</label>
+        <input type="number" id="epsilon" name="epsilon" required><br><br>
+
+        <button type="button" onclick="runGSA()">Run Standard GSA</button>
+    </form>
+
+    <div id="output"></div>
+</div>
+
+<script>
+    function runGSA() {
+      var N = parseInt(document.getElementById("N").value);
+      var Imax = parseInt(document.getElementById("Imax").value);
+      var G0 = parseFloat(document.getElementById("G0").value);
+      var alpha = parseFloat(document.getElementById("alpha").value);
+      var epsilon = parseFloat(document.getElementById("epsilon").value);
+
+      var population = initializePopulation(N);
+      var velocities = new Array(N);
+
+      for (var t = 0; t < Imax; t++) {
+        var fitnessValues = calculateFitnessValues(population);
+        var forces = calculateForces(fitnessValues);
+
+        for (var i = 0; i < N; i++) {
+          velocities[i] = updateVelocity(population, forces, i, alpha);
+          population[i] = updatePosition(population, velocities, i);
+        }
+      }
+
+      var output = "<h2>Final Positions of Agents:</h2>";
+      for (var i = 0; i < N; i++) {
+        output += "Agent " + i + ": " + population[i] + "<br>";
+      }
+
+      document.getElementById("output").innerHTML = output;
+    }
+
+    function initializePopulation(N) {
+      var population = [];
+      for (var i = 0; i < N; i++) {
+        population.push(Math.random());
+      }
+      return population;
+    }
+
+    function calculateFitnessValues(population) {
+      var fitnessValues = [];
+      for (var i = 0; i < population.length; i++) {
+        fitnessValues.push(population[i] * population[i]); // Example fitness function: f(x) = x^2
+      }
+      return fitnessValues;
+    }
+
+    function calculateForces(fitnessValues) {
+      var bestFitness = Math.max(...fitnessValues);
+      var worstFitness = Math.min(...fitnessValues);
+      var forces = [];
+      for (var i = 0; i < fitnessValues.length; i++) {
+        forces.push((fitnessValues[i] - worstFitness) / (bestFitness - worstFitness + epsilon));
+      }
+      return forces;
+    }
+
+    function updateVelocity(population, forces, i, alpha) {
+      var randG = Math.random();
+      var rand = Math.random();
+      return rand * population[i] + alpha * (randG - 0.5);
+    }
+
+    function updatePosition(population, velocities, i) {
+      return population[i] + velocities[i];
+    }
+</script>
+</body>
+</html>

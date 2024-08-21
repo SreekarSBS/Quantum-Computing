@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genetic Quantum Algorithm</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, #e63946, #f1faee);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #1d3557;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 500px;
+            width: 100%;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1d3557;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        form {
+            width: 100%;
+            text-align: left;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #1d3557;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #a8dadc;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #f1faee;
+            color: #1d3557;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #457b9d;
+            color: #f1faee;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #1d3557;
+            transform: translateY(-2px);
+        }
+
+        #result {
+            width: 100%;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #1d3557;
+            background-color: rgba(69, 123, 157, 0.1);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h1>Genetic Quantum Algorithm</h1>
+    <form id="inputForm">
+        <label for="populationSize">Population Size:</label>
+        <input type="number" id="populationSize" name="populationSize" required><br><br>
+
+        <label for="chromosomeLength">Chromosome Length:</label>
+        <input type="number" id="chromosomeLength" name="chromosomeLength" required><br><br>
+
+        <label for="maxGenerations">Max Generations:</label>
+        <input type="number" id="maxGenerations" name="maxGenerations" required><br><br>
+
+        <button type="submit">Run Algorithm</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    document.getElementById("inputForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        runAlgorithm();
+    });
+
+    function runAlgorithm() {
+        var populationSize = document.getElementById("populationSize").value;
+        var chromosomeLength = document.getElementById("chromosomeLength").value;
+        var maxGenerations = document.getElementById("maxGenerations").value;
+
+        // Initialize population of quantum chromosomes Q(t)
+        var population = initializePopulation(populationSize, chromosomeLength);
+
+        // Observation and evaluation
+        var evaluatedPopulation = evaluatePopulation(population);
+
+        // Store the best solution b among P(t)
+        var bestSolution = findBestSolution(evaluatedPopulation);
+
+        // Main loop
+        for (var t = 0; t < maxGenerations; t++) {
+            // Observation
+            var observedPopulation = observePopulation(evaluatedPopulation);
+
+            // Evaluation
+            evaluatedPopulation = evaluatePopulation(observedPopulation);
+
+            // Update Q(t) using quantum gates U(t)
+            updateQuantumState();
+
+            // Store the best solution b among P(t)
+            bestSolution = findBestSolution(evaluatedPopulation);
+        }
+
+        // Output the best solution
+        document.getElementById("result").innerHTML = "<h2>Best Solution Found:</h2><p>" + arrayToString(bestSolution) + "</p>";
+    }
+
+    // Helper method to initialize the population of quantum chromosomes Q(t)
+    function initializePopulation(populationSize, chromosomeLength) {
+        var population = [];
+        for (var i = 0; i < populationSize; i++) {
+            var chromosome = [];
+            for (var j = 0; j < chromosomeLength; j++) {
+                chromosome.push(Math.random() < 0.5); // Randomly initialize chromosome with true/false
+            }
+            population.push(chromosome);
+        }
+        return population;
+    }
+
+    // Placeholder method for evaluating each binary solution in the population P(t)
+    function evaluatePopulation(population) {
+        // Placeholder method - replace with your evaluation logic
+        // For now, just return the population as is
+        return population;
+    }
+
+    // Placeholder method for observing the quantum state of the population Q(t) and creating P(t)
+    function observePopulation(quantumPopulation) {
+        // Placeholder method - replace with your observation logic
+        // For now, just return the quantum population as is
+        return quantumPopulation;
+    }
+
+    // Placeholder method for updating the quantum state Q(t) using quantum gates U(t)
+    function updateQuantumState() {
+        // Placeholder method - replace with your quantum gate update logic
+    }
+
+    // Helper method to find the best solution among the evaluated population P(t)
+    function findBestSolution(population) {
+        // Placeholder method - replace with your best solution finding logic
+        // For now, let's assume the first solution is the best
+        var bestFitness = Number.NEGATIVE_INFINITY;
+        var bestSolution = population[0];
+        // Assuming the evaluation result is stored in a fitness array
+        var fitnessArray = evaluateFitness(population);
+        for (var i = 0; i < population.length; i++) {
+            if (fitnessArray[i] > bestFitness) {
+                bestFitness = fitnessArray[i];
+                bestSolution = population[i];
+            }
+        }
+        return bestSolution;
+    }
+
+    // Helper method for converting a boolean array to a string representation
+    function arrayToString(array) {
+        return array.map(function(value) {
+            return value ? '1' : '0';
+        }).join('');
+    }
+
+    // Placeholder method for evaluating the fitness of each chromosome in the population
+    function evaluateFitness(population) {
+        // Placeholder method - replace with your fitness evaluation logic
+        // For now, return an array of random fitness values
+        var fitnessArray = [];
+        for (var i = 0; i < population.length; i++) {
+            fitnessArray[i] = Math.random() * 100; // Random fitness values between 0 and 100
+        }
+        return fitnessArray;
+    }
+</script>
+</body>
+</html>
